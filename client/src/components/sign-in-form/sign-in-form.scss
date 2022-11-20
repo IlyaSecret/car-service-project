@@ -1,0 +1,64 @@
+
+.sign-in-form {
+    background: url("../../../public/img/sign-in-background.png") no-repeat center;
+    width: 100%;
+    min-height: 700px;
+    background-size: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.sign-in-form__form {
+    display: flex;
+    flex-direction: column;
+    input {
+        width: 386px;
+        height: 30px;
+        border: none;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        font-family: 'Tondo Corp';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 24px;
+        line-height: 30px;
+        letter-spacing: 0.05em;
+        padding: 8px 0px 8px 20px;
+    }
+    p {
+        font-family: 'Tondo Corp';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 36px;
+        line-height: 45px;
+        letter-spacing: 0.05em;
+        color: #FFF;
+        margin-bottom: 30px;
+        margin-left: 29px;
+    }
+    img {
+        position: relative;
+        right: 29px;
+        top: 10px;
+        width: 34px;
+        height: 37px;
+    }
+}
+#sign-in-form__button {
+    background-color: #1381EA;
+    color: white;
+    padding: 7px 19px;
+    border-radius: 10px;
+    border: none;
+    width: 230px;
+    height: 45px;
+    font-family: 'Tondo Corp';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    margin-left: 29px;
+    letter-spacing: 0.05em;
+}
+.sign-in-form__form {
+    padding-right: 400px;
+}
