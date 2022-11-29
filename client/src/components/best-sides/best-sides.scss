@@ -1,0 +1,9 @@
+.best-sides {
+    margin: 65px 110px;
+}
+.best-sides__cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1em;
+}

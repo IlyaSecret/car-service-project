@@ -8,7 +8,15 @@
   color: #000000;
 }
 
-@import url(//db.onlinewebfonts.com/c/c3c67593cc9c0a480f04c05092de12f4?family=Tondo+Corp);
+// @import url(//db.onlinewebfonts.com/c/c3c67593cc9c0a480f04c05092de12f4?family=Tondo+Corp);
+@font-face {
+  font-family: "Tondo Corp";
+  src: url("../public/fonts/TondoCorp-Light.ttf");
+}
+@font-face {
+  font-family: "Tondo Corp Bold";
+  src: url("../public/fonts/TondoCorp-Bold.ttf");
+}
 body {
   margin: 0;
   font-family: "Tondo Corp";
