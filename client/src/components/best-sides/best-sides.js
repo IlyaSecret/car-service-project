@@ -8,7 +8,7 @@ export default function BestSides() {
             <div className="best-sides__titile title">Почему наш сервис наилучший?</div>
             <div className="best-sides__cards">
                 {BestSidesMock.map(el => {
-                    return <BestSidesItem image={el.image} text={el.text} title={el.title}/>
+                    return <BestSidesItem key={el.title}image={el.image} text={el.text} title={el.title}/>
                 })}
             </div>
         </div>

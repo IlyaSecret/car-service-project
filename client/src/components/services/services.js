@@ -58,6 +58,20 @@ export default function Services() {
               </p>
           </div>
         </div>
+
+        <div className="servies__card">
+          <div className="servies__card__image five">
+
+          </div>
+          <div className="servies__card__text">
+              <p className="servies__card__title">
+                Ремонт лампочек
+              </p>
+              <p className="servies__card__info">
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
+              </p>
+          </div>
+        </div>
       </div>
     </div>
   )
