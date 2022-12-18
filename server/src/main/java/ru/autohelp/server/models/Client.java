@@ -5,6 +5,7 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -36,8 +37,8 @@ public class Client {
     @Column(name = "role")
     private String role;
 
-    @OneToMany(mappedBy = "owner")
-    private List<Car> cars;
+    @Column(name = "car")
+    private String car;
 
 
     // Конструктор по умолчанию нужен для Spring
@@ -45,9 +46,11 @@ public class Client {
 
     }
 
-    public Client(String fullName, String contact) {
+    public Client(String fullName, String contact, String car, String role) {
         this.fullName = fullName;
         this.contact = contact;
+        this.car = car;
+        this.role = role;
     }
 
     public int getId() {
@@ -66,12 +69,12 @@ public class Client {
         this.fullName = fullName;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public String getCars() {
+        return car;
     }
 
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
+    public void setCars(String cars) {
+        this.car = cars;
     }
 
     public String getRole() {
@@ -88,7 +91,7 @@ public class Client {
                 "id=" + id +
                 ", fullName='" + fullName + '\'' +
                 ", role='" + role + '\'' +
-                ", cars=" + cars +
+                ", car=" + car +
                 '}';
     }
 }

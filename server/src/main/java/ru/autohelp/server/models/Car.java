@@ -2,6 +2,7 @@ package ru.autohelp.server.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,7 @@ public class Car {
 
     @ManyToOne
     @JoinColumn(name = "client_id", referencedColumnName = "id")
+    @NotBlank
     private Client owner;
 
     public Car() {
