@@ -1,14 +1,10 @@
+import { useEffect, useRef } from "react";
 import "./header.scss";
 
 export default function Header() {
   return (
     <div className="header">
       <div className="header__top">
-        <div className="header__top__info">
-          <p id="header__top__name">Автотехцентр</p>
-          <p id="header__top__sales">Гарантии, Скидки постоянным клиентам</p>
-        </div>
-
         <img src="./img/logo.svg" width="178px" height="64px"></img>
 
         <div className="header__top__left">
@@ -20,7 +16,6 @@ export default function Header() {
       <div className="header__bottom">
         <nav className="header__bottom__navigation">
           <ul className="header__bottom__navigation__list">
-            <li>Главная</li>
             <li>О нас</li>
             <li>Услуги</li>
             <li>Контакты</li>

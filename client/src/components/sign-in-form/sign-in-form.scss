@@ -1,12 +1,17 @@
 
 .sign-in-form {
-    background: url("../../../public/img/sign-in-background.png") no-repeat center;
+    // background: url("../../../public/img/sign-in-background.png") no-repeat center;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../../../public/img/sign-in-background.png");
+    background-repeat: no-repeat;
     width: 100%;
     min-height: 700px;
     background-size: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+.sign-in-form::after {
+    background: rgba(0,0,0, 0);
 }
 .sign-in-form__form {
     display: flex;
@@ -25,18 +30,23 @@
         letter-spacing: 0.05em;
         padding: 8px 0px 8px 20px;
     }
-    p {
+    .sign-in-form__form__title {
+        font-size: 36px;
+        letter-spacing: 0.05em;
+        color: #FFF;
+        margin: 0 0 30px 28px;
+        
+    }
+    .sign-in-form__form__title__1 {
         font-family: 'Tondo Corp';
         font-style: normal;
         font-weight: 300;
-        font-size: 36px;
-        line-height: 45px;
+        font-size: 48px;
         letter-spacing: 0.05em;
-        color: #FFF;
-        margin-bottom: 30px;
-        margin-left: 29px;
+        color: #fff;
+        margin: 0 0 50px 28px;
     }
-    img {
+    .icons {
         position: relative;
         right: 29px;
         top: 10px;
@@ -50,7 +60,7 @@
     padding: 7px 19px;
     border-radius: 10px;
     border: none;
-    width: 230px;
+    width: 386px;
     height: 45px;
     font-family: 'Tondo Corp';
     font-style: normal;
@@ -58,7 +68,33 @@
     font-size: 24px;
     margin-left: 29px;
     letter-spacing: 0.05em;
+    cursor: pointer;
 }
 .sign-in-form__form {
     padding-right: 400px;
+}
+.sign-in-form__ads {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.sign-in-form__ads__text {
+    margin: 0;
+    font-family: 'Tondo Corp';
+    font-style: normal;
+    p {
+        
+        display: inline-block;
+        align-self: center;
+        margin-left: 10px;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: 0.05em;
+        color: #FFFFFF;
+    }
+    img {
+        margin-left: 28px;
+        vertical-align: middle;
+    }
 }
