@@ -35,7 +35,7 @@ public class MyConfig {
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan("ru.autohelp.server2.entity");
         Properties hibernateProperties = new Properties();
-        hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgresDialect");
+        hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         hibernateProperties.setProperty("hibernate.show_sql", "true");
         sessionFactory.setHibernateProperties(hibernateProperties);
         return sessionFactory;
