@@ -22,10 +22,10 @@ public class MyConfig {
     @Bean
     public DataSource dataSource() throws PropertyVetoException {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
-        dataSource.setDriverClass("org.postgresql.Driver");
-        dataSource.setJdbcUrl("jdbc:postgresql://localhost:5432/postgres");
-        dataSource.setUser("postgres");
-        dataSource.setPassword("postgres");
+        dataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
+        dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/autohelp?useSSL=false");
+        dataSource.setUser("bestuser");
+        dataSource.setPassword("bestuser");
         return dataSource;
     }
 
@@ -35,7 +35,7 @@ public class MyConfig {
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan("ru.autohelp.server2.entity");
         Properties hibernateProperties = new Properties();
-        hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+        hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         hibernateProperties.setProperty("hibernate.show_sql", "true");
         sessionFactory.setHibernateProperties(hibernateProperties);
         return sessionFactory;

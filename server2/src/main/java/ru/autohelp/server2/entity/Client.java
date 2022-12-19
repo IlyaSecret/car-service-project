@@ -67,12 +67,12 @@ public class Client {
         this.fullName = fullName;
     }
 
-    public String getCars() {
-        return car;
+    public String getContact() {
+        return contact;
     }
 
-    public void setCars(String cars) {
-        this.car = cars;
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public String getRole() {
@@ -83,13 +83,22 @@ public class Client {
         this.role = role;
     }
 
+    public String getCar() {
+        return car;
+    }
+
+    public void setCar(String car) {
+        this.car = car;
+    }
+
     @Override
     public String toString() {
-        return "Person{" +
+        return "Client{" +
                 "id=" + id +
                 ", fullName='" + fullName + '\'' +
+                ", contact='" + contact + '\'' +
                 ", role='" + role + '\'' +
-                ", car=" + car +
+                ", car='" + car + '\'' +
                 '}';
     }
 }
