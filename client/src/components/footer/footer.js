@@ -24,7 +24,7 @@ export default function Footer() {
 
         <div className="footer__left-info">
         <div className="contacts__info__time">
-                    <img src="./img/contacts-img/map-pin.png"></img>
+                    <img src="./img/white-footer/map-pin.png"></img>
                     <div>
                         <p>г. Екатеринбург</p>
                         <p>Ул. Репина, д. 32</p>
@@ -32,7 +32,7 @@ export default function Footer() {
                 </div>
 
                 <div className="contacts__info__time">
-                    <img src="./img/contacts-img/phone.png"></img>
+                    <img src="./img/white-footer/phone.png"></img>
                     <div>
                         <p>+7 (343) 361-52-26</p>
                         <p>+7 (922) 181-52-26</p>
@@ -40,7 +40,7 @@ export default function Footer() {
                 </div>
 
                 <div className="contacts__info__time">
-                    <img src="./img/contacts-img/mail.png" id="mail"></img>
+                    <img src="./img/white-footer/mail.png" id="mail"></img>
                     <div>
                         <p>avtohelp96@bk.ru</p>
                     </div>

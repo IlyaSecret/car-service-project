@@ -1,5 +1,6 @@
 import "./about-us.scss";
 
+
 export default function AboutUs() {
     return (
       <div className="about-us">
@@ -13,10 +14,10 @@ export default function AboutUs() {
 </p>
             <p>Если вам не безразлична судьба вашего автомобиля и вы цените профессионализм мастеров, позвоните к представителям автосервиса «Автохэлп» по телефону <strong>+7 (343) 361–52–26</strong>. Они запишут вас на диагностику и оперативно помогут устранить возникшую проблему.
 </p>
-          
+
           </div>
           <div className="about-us__imgae">
-            
+
           </div>
           </div>
       </div>

@@ -5,7 +5,7 @@ export default function Services() {
     <div className="services">
       <p className="services__title">Услуги автосервиса</p>
 
-      <div className="services_cards"> 
+      <div className="services_cards">
         <div className="servies__card">
           <div className="servies__card__image one">
 
@@ -15,7 +15,7 @@ export default function Services() {
                 Капитальный ремонт ДВС
               </p>
               <p className="servies__card__info">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
               </p>
           </div>
         </div>
@@ -28,7 +28,7 @@ export default function Services() {
               Капитальный ремонт МКПП
               </p>
               <p className="servies__card__info">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
               </p>
           </div>
         </div>
@@ -41,7 +41,7 @@ export default function Services() {
               Заправка кондиционера
               </p>
               <p className="servies__card__info">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
               </p>
           </div>
         </div>
@@ -54,7 +54,7 @@ export default function Services() {
               Ремонт ходовой части
               </p>
               <p className="servies__card__info">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
               </p>
           </div>
         </div>
@@ -68,7 +68,7 @@ export default function Services() {
                 Ремонт лампочек
               </p>
               <p className="servies__card__info">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
               </p>
           </div>
         </div>

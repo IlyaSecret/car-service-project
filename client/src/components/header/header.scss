@@ -6,11 +6,6 @@
 .header__top{
     display: flex;
     justify-content: space-between;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 20px;
-    letter-spacing: 0.05em;
 }
 
 
@@ -35,12 +30,41 @@
 }
 }
 
+.header__top__left {
+    text-align: end;
+}
+button {
+    outline: none;
+    font-family: "Tondo Corp";
+    border: none;
+    background-color: white;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+
+}
+#nav_button {
+    background:
+            linear-gradient(to right, #FFF, #FFF),
+            linear-gradient(to right, #1381EA, #1381EA);
+    background-size: 100% 0.1em, 0 0.1em;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 400ms;
+}
+
+#nav_button:hover {
+    background-size: 0 0.1em, 100% 0.1em;
+}
 #header_lk {
     border: 1px solid #000000;
     padding: 10px 35px;
     border-radius: 10px;
-    
+    cursor: pointer;
+    transition: 0.2s;
 }
-.header__top__left {
-    text-align: end;
+
+#header_lk:hover {
+    background-color: #1381EA;
 }

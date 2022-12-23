@@ -2,6 +2,12 @@ import { useEffect, useRef } from "react";
 import "./header.scss";
 
 export default function Header() {
+  const clickHandler = (position) => {
+    window.scrollTo({
+      top: position,
+      behavior: "smooth",
+    });
+  };
   return (
     <div className="header">
       <div className="header__top">
@@ -16,11 +22,31 @@ export default function Header() {
       <div className="header__bottom">
         <nav className="header__bottom__navigation">
           <ul className="header__bottom__navigation__list">
-            <li>О нас</li>
-            <li>Услуги</li>
-            <li>Контакты</li>
-            <li>Галерея</li>
-            <li>Отзывы</li>
+            <li>
+              <button id="nav_button" onClick={() => clickHandler(907)}>
+                О нас
+              </button>
+            </li>
+            <li>
+              <button id="nav_button" onClick={() => clickHandler(1500)}>
+                Услуги
+              </button>
+            </li>
+            <li>
+              <button id="nav_button" onClick={() => clickHandler(2730)}>
+                Контакты
+              </button>
+            </li>
+            <li>
+              <button id="nav_button" onClick={() => clickHandler(3480)}>
+                Галерея
+              </button>
+            </li>
+            <li>
+              <button id="nav_button" onClick={() => clickHandler(4480)}>
+                Отзывы
+              </button>
+            </li>
             <li id="header_lk">Личный кабинет</li>
           </ul>
         </nav>
