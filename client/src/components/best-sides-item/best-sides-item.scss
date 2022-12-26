@@ -1,0 +1,34 @@
+.best-sides-item {
+    padding-top: 10px;
+    display: flex;
+    min-width: 300px;
+    max-width: 430px;
+    align-items: center;
+}
+.best-sides-item__container__title {
+    padding-bottom: 35px;
+    font-family: "Tondo Corp";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 25px;
+    letter-spacing: 0.05em;
+    color: #000000;
+}
+.best-sides-item__container__text {
+    font-family: 'Tondo Corp';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.05em;
+    color: #000000;
+    box-sizing: border-box;
+    p {
+        margin: 0;
+    }
+}
+.best-sides-item__container {
+    display: flex;
+    flex-direction: column;
+}

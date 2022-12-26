@@ -1,0 +1,63 @@
+.services {
+    margin: 65px 100px 0px 100px;
+}
+
+.services_cards {
+    display: flex;
+    justify-content: space-between;
+}
+
+.services__title {
+    font-family: 'Tondo Corp';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 60px;
+    letter-spacing: 0.05em;
+    color: #000000;
+}
+.servies__card {
+    width: 282px;
+    height: 445px;
+    box-shadow: 6px 11px 12px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    text-align: start;
+}
+.servies__card__image {
+    height: 50%;
+}
+.servies__card__text {
+    align-self: start;
+    padding: 15px;
+}
+.servies__card__title {
+    font-family: 'Tondo Corp';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 25px;
+    letter-spacing: 0.05em;
+}
+.servies__card__info {
+    font-family: 'Tondo Corp';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.05em;
+}
+.one {
+    background: url("../../../public/img/cards/img1.png") no-repeat;
+}
+.two {
+    background: url("../../../public/img/cards/img2.png") no-repeat;
+}
+.three {
+    background: url("../../../public/img/cards/img3.png") no-repeat;
+}
+.four {
+    background: url("../../../public/img/cards/img4.png") no-repeat;
+}
+.five {
+    background: url("../../../public/img/cards/img5.png") no-repeat;
+}
