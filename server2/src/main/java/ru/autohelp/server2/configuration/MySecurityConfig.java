@@ -29,7 +29,10 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter{
                         roles("ADMIN"))
                 .withUser(userBuilder.username("elena").
                         password("elena").
-                        roles("USER"));
+                        roles("USER"))
+                .withUser(userBuilder.username("misha")
+                        .password("misha")
+                        .roles("USER", "ADMIN"));
     }
 
     @Override
