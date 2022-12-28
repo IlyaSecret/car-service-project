@@ -21,7 +21,7 @@ public class ClientController {
     @Autowired
     private final SessionFactory factory;
 
-    private Session session;
+    private final Session session;
 
     public ClientController() {
         factory = new Configuration()

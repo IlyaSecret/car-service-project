@@ -36,7 +36,7 @@ public class SpringConfig {
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan("ru.autohelp.server.models");
         Properties hibernateProperties = new Properties();
-        hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgresPlusDialect");
+        hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         hibernateProperties.setProperty("hibernate.show_sql", "true");
         sessionFactory.setHibernateProperties(hibernateProperties);
         return sessionFactory;
