@@ -30,15 +30,15 @@ public class Client {
 //    @Min(value = 1900, message = "Год рождения должен быть больше, чем 1900")
 //    @Column(name = "year_of_birth")
 //    private int yearOfBirth;
-//
-//    @Column(name = "password")
-//    private String password;
+
+    @Column(name = "car")
+    private String car;
 
     @Column(name = "role")
     private String role;
 
-    @Column(name = "car")
-    private String car;
+    @Column(name = "password")
+    private String password;
 
 
     // Конструктор по умолчанию нужен для Spring
