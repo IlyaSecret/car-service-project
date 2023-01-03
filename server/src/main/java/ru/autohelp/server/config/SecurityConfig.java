@@ -9,27 +9,42 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import ru.autohelp.server.models.Car;
-import ru.autohelp.server.models.Client;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.User.UserBuilder;
+
+import javax.sql.DataSource;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    DataSource dataSource;
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
+        //auth.jdbcAuthentication().dataSource(dataSource);
+
+        UserBuilder userBuilder = User.withDefaultPasswordEncoder();
+        auth.inMemoryAuthentication()
+                .withUser(userBuilder.username("kirill").
+                        password("kirill").
+                        roles("ADMIN"))
+                .withUser(userBuilder.username("elena").
+                        password("elena").
+                        roles("CLIENT"))
+                .withUser(userBuilder.username("ivan").
+                        password("ivan").
+                        roles("EMPLOYEE", "HR"));
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admin").hasRole("admin")
-                .antMatchers("/auth/login","/auth/registration", "/error").permitAll()
-                .anyRequest().hasAnyRole("user","admin")
-//                .anyRequest().authenticated()
-                .and()
-                .formLogin().loginPage("/auth/login")
-                .loginProcessingUrl("/process_login")
-                .defaultSuccessUrl("/clients", true)
-                .failureUrl("/auth/login?error")
-                .and()
-                .logout().logoutUrl("/logout")
-                .logoutSuccessUrl("/auth/login");
+                .antMatchers("/").hasAnyRole("EMPLOYEE", "CLIENT", "ADMIN")
+                .antMatchers("/client_info").hasRole("CLIENT")
+                .antMatchers("/admin_info/**").hasRole("ADMIN")
+                .and().formLogin().permitAll();
     }
 
     @Bean
