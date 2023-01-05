@@ -23,7 +23,7 @@ public class Client {
 
     @NotEmpty(message = "Контакт не должно быть пустым")
     @Size(min = 2, max = 100, message = "Контакт должно быть от 2 до 100 символов длиной")
-    @Digits(message = "Телефон должен состоять только из цифр", integer = 11, fraction = 0)
+//    @Digits(message = "Телефон должен состоять только из цифр", integer = 11, fraction = 0)
     @Column(name = "contact")
     private String contact;
 
@@ -69,12 +69,20 @@ public class Client {
         this.fullName = fullName;
     }
 
-    public String getCars() {
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public String getCar() {
         return car;
     }
 
-    public void setCars(String cars) {
-        this.car = cars;
+    public void setCar(String car) {
+        this.car = car;
     }
 
     public String getRole() {
@@ -83,6 +91,14 @@ public class Client {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
