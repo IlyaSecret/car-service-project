@@ -31,7 +31,7 @@
 }
 
 .header__top__left {
-    text-align: end;
+    text-align: start;
 }
 button {
     outline: none;
@@ -67,4 +67,8 @@ button {
 
 #header_lk:hover {
     background-color: #1381EA;
+}
+a {
+    text-decoration: none;
+    color: black;
 }
