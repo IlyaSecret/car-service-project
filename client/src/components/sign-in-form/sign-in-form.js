@@ -1,13 +1,7 @@
 import "./sign-in-form.scss";
-import { useRef } from "react";
-import { useEffect } from "react";
 export default function SignInForm() {
-  const ref = useRef();
-  useEffect(() => {
-    console.log(ref.current.getBoundingClientRect());
-  });
   return (
-    <div className="sign-in-form" ref={ref}>
+    <div className="sign-in-form">
         <div className="sign-in-form__form">
           <p className="sign-in-form__form__title__1">Автосервис Autohelp</p>
           <p className="sign-in-form__form__title">Записаться на ремонт</p>
@@ -19,7 +13,7 @@ export default function SignInForm() {
             <img src="../../img/phone.png" className="icons"></img>
             <input type="text"  placeholder="Телефон"></input>
           </div>
-          
+
           <button id="sign-in-form__button" >Отправить</button>
           <div className="sign-in-form__ads">
             <div  className="sign-in-form__ads__text">
@@ -31,7 +25,7 @@ export default function SignInForm() {
               <p className="sign-in-form__ads__text">Скидки постоянным клиентам</p>
             </div>
           </div>
-          
+
         </div>
         <div className="filler"></div>
     </div>

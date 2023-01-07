@@ -2,38 +2,57 @@ package ru.autohelp.server.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.GlobalAuthenticationConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import ru.autohelp.server.models.Car;
-import ru.autohelp.server.models.Client;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.User.UserBuilder;
+
+import javax.sql.DataSource;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private DataSource dataSource;
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
+        //auth.jdbcAuthentication().dataSource(dataSource);
+
+        auth.inMemoryAuthentication()
+                .withUser("kirill")
+                        .password("kirill")
+                        .authorities("ADMIN")
+                .and()
+                .withUser("elena")
+                        .password("elena")
+                        .authorities("CLIENT")
+                .and()
+                .withUser("ivan")
+                        .password("ivan")
+                        .authorities("EMPLOYEE", "CLIENT", "ADMIN");
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admin").hasRole("admin")
-                .antMatchers("/auth/login","/auth/registration", "/error").permitAll()
-                .anyRequest().hasAnyRole("user","admin")
-//                .anyRequest().authenticated()
-                .and()
-                .formLogin().loginPage("/auth/login")
-                .loginProcessingUrl("/process_login")
-                .defaultSuccessUrl("/people", true)
-                .failureUrl("/auth/login?error")
-                .and()
-                .logout().logoutUrl("/logout")
-                .logoutSuccessUrl("/auth/login");
+                .antMatchers("/**").permitAll()
+                .antMatchers("/client/**").hasRole("CLIENT")
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/api/**").hasAnyRole("EMPLOYEE", "CLIENT", "ADMIN")
+                .and().formLogin();
     }
 
     @Bean
     public PasswordEncoder getPasswordEncoder() {
-        return new BCryptPasswordEncoder();
+        return NoOpPasswordEncoder.getInstance();
     }
 }

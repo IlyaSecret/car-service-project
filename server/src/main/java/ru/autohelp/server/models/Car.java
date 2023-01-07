@@ -38,9 +38,8 @@ public class Car {
     @Column(name = "number")
     private String number;
 
-    @ManyToOne
-    @JoinColumn(name = "client_id", referencedColumnName = "id")
-    @NotBlank
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "client_id")
     private Client owner;
 
     public Car() {
@@ -110,5 +109,18 @@ public class Car {
 
     public void setOwner(Client owner) {
         this.owner = owner;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", vin='" + vin + '\'' +
+                ", model='" + model + '\'' +
+                ", year=" + year +
+                ", mileage=" + mileage +
+                ", number='" + number + '\'' +
+                ", owner=" + owner +
+                '}';
     }
 }

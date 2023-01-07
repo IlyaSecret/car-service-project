@@ -4,7 +4,6 @@ export default function Contacts() {
     return (
         <div className="contacts">
             <p className="title">Контакты</p>
-
             <div className="contacts__container">
                 <div className="contacts__map">
                     <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Adbda181943693563e4cd12207f845ebfc50e40bc7bbd0eba894b22c3618fa329&amp;source=constructor" width="802" height="580" frameborder="0"></iframe>
@@ -49,9 +48,9 @@ export default function Contacts() {
                 </div>
             </div>
             </div>
-            
 
-            
+
+
         </div>
     );
 }

@@ -13,7 +13,7 @@ import java.util.List;
 public class Client {
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NotEmpty(message = "Имя не должно быть пустым")
@@ -23,22 +23,22 @@ public class Client {
 
     @NotEmpty(message = "Контакт не должно быть пустым")
     @Size(min = 2, max = 100, message = "Контакт должно быть от 2 до 100 символов длиной")
-    @Digits(message = "Телефон должен состоять только из цифр", integer = 11, fraction = 0)
+//    @Digits(message = "Телефон должен состоять только из цифр", integer = 11, fraction = 0)
     @Column(name = "contact")
     private String contact;
 
 //    @Min(value = 1900, message = "Год рождения должен быть больше, чем 1900")
 //    @Column(name = "year_of_birth")
 //    private int yearOfBirth;
-//
-//    @Column(name = "password")
-//    private String password;
+
+    @OneToOne(mappedBy = "owner", cascade = CascadeType.PERSIST)
+    private Car car;
 
     @Column(name = "role")
     private String role;
 
-    @Column(name = "car")
-    private String car;
+    @Column(name = "password")
+    private String password;
 
 
     // Конструктор по умолчанию нужен для Spring
@@ -46,7 +46,7 @@ public class Client {
 
     }
 
-    public Client(String fullName, String contact, String car, String role) {
+    public Client(String fullName, String contact, Car car, String role) {
         this.fullName = fullName;
         this.contact = contact;
         this.car = car;
@@ -69,12 +69,20 @@ public class Client {
         this.fullName = fullName;
     }
 
-    public String getCars() {
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public Car getCar() {
         return car;
     }
 
-    public void setCars(String cars) {
-        this.car = cars;
+    public void setCar(Car car) {
+        this.car = car;
     }
 
     public String getRole() {
@@ -85,13 +93,22 @@ public class Client {
         this.role = role;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
-        return "Person{" +
+        return "Client{" +
                 "id=" + id +
                 ", fullName='" + fullName + '\'' +
+                ", contact='" + contact + '\'' +
+                ", car='" + car + '\'' +
                 ", role='" + role + '\'' +
-                ", car=" + car +
                 '}';
     }
 }

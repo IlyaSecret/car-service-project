@@ -8,7 +8,7 @@ public interface ClientService {
 
     public List<Client> getAllClients();
 
-    public void saveClient(Client employee);
+    public void saveClient(Client client);
 
     public Client getClient(int id);
 
