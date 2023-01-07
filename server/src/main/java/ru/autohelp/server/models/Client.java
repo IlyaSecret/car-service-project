@@ -13,7 +13,7 @@ import java.util.List;
 public class Client {
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NotEmpty(message = "Имя не должно быть пустым")
@@ -31,8 +31,8 @@ public class Client {
 //    @Column(name = "year_of_birth")
 //    private int yearOfBirth;
 
-    @Column(name = "car")
-    private String car;
+    @OneToOne(mappedBy = "owner", cascade = CascadeType.PERSIST)
+    private Car car;
 
     @Column(name = "role")
     private String role;
@@ -46,7 +46,7 @@ public class Client {
 
     }
 
-    public Client(String fullName, String contact, String car, String role) {
+    public Client(String fullName, String contact, Car car, String role) {
         this.fullName = fullName;
         this.contact = contact;
         this.car = car;
@@ -77,11 +77,11 @@ public class Client {
         this.contact = contact;
     }
 
-    public String getCar() {
+    public Car getCar() {
         return car;
     }
 
-    public void setCar(String car) {
+    public void setCar(Car car) {
         this.car = car;
     }
 
@@ -103,11 +103,12 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "Client{" +
                 "id=" + id +
                 ", fullName='" + fullName + '\'' +
+                ", contact='" + contact + '\'' +
+                ", car='" + car + '\'' +
                 ", role='" + role + '\'' +
-                ", car=" + car +
                 '}';
     }
 }
