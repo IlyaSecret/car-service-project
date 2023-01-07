@@ -13,7 +13,7 @@ import java.util.List;
 public class Client {
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NotEmpty(message = "Имя не должно быть пустым")
@@ -103,11 +103,12 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "Client{" +
                 "id=" + id +
                 ", fullName='" + fullName + '\'' +
+                ", contact='" + contact + '\'' +
+                ", car='" + car + '\'' +
                 ", role='" + role + '\'' +
-                ", car=" + car +
                 '}';
     }
 }
