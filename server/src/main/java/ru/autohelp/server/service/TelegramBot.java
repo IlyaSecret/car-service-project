@@ -111,7 +111,7 @@ public class TelegramBot extends TelegramLongPollingBot{
                     case "/mydata":
                     case "проверить мои данные":
                         if(clientService.getClient((int) chatId) == null)
-                            sendMessage(chatId, EmojiParser.parseToUnicode("Ваши отсутствуют в системе :grimacing:"));
+                            sendMessage(chatId, EmojiParser.parseToUnicode("Ваши данные отсутствуют в системе :grimacing:"));
                         else{
                             sendMessage(chatId, "Ваши данные: \n");
                             sendMessage(chatId, clientService.getClient((int) chatId).toString());
