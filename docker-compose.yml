@@ -1,0 +1,29 @@
+version: '3'
+services:
+  nginx-front:
+    image: nginx:1.17.8
+    volumes:
+      - ./client:/code
+    networks:
+      net:
+        ipv4_address: 192.168.240.2
+  nginx-back:
+    image: nginx:1.17.8
+    volumes:
+      - ./server:/code
+    networks:
+      net:
+        ipv4_address: 192.168.240.3
+  java-back:
+    image: java:openjdk-9-jre
+    volumes:
+      - ./server:/code
+    networks:
+      net:
+        ipv4_address: 192.168.240.4
+networks:
+  net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.240.0/24
