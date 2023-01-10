@@ -31,14 +31,15 @@ public class Client {
 //    @Column(name = "year_of_birth")
 //    private int yearOfBirth;
 
-    @OneToOne(mappedBy = "owner", cascade = CascadeType.PERSIST)
-    private Car car;
-
     @Column(name = "role")
     private String role;
 
     @Column(name = "password")
     private String password;
+
+    @OneToOne(mappedBy = "client", cascade = CascadeType.PERSIST,
+            fetch = FetchType.LAZY)
+    private Car car;
 
 
     // Конструктор по умолчанию нужен для Spring
@@ -107,8 +108,9 @@ public class Client {
                 "id=" + id +
                 ", fullName='" + fullName + '\'' +
                 ", contact='" + contact + '\'' +
-                ", car='" + car + '\'' +
                 ", role='" + role + '\'' +
+                ", password='" + password + '\'' +
+                ", car=" + car +
                 '}';
     }
 }

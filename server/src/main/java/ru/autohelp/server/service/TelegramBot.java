@@ -3,8 +3,6 @@ package ru.autohelp.server.service;
 import com.vdurmont.emoji.EmojiParser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -23,9 +21,8 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.autohelp.server.config.BotConfig;
 import ru.autohelp.server.models.Ads;
 import ru.autohelp.server.models.Client;
-import ru.autohelp.server.repository.AdsRepository;
+import ru.autohelp.server.dao.AdsRepository;
 
-import javax.print.attribute.standard.MediaSize;
 import java.util.ArrayList;
 import java.util.List;
 

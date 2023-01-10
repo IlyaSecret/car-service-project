@@ -1,4 +1,4 @@
-package ru.autohelp.server.repository;
+package ru.autohelp.server.dao;
 
 import org.springframework.data.repository.CrudRepository;
 import ru.autohelp.server.models.Ads;
