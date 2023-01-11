@@ -2,7 +2,6 @@ package ru.autohelp.server.service;
 
 import com.vdurmont.emoji.EmojiParser;
 import lombok.extern.slf4j.Slf4j;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -26,6 +25,7 @@ import ru.autohelp.server.models.Client;
 import ru.autohelp.server.dao.AdsRepository;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Slf4j
@@ -59,6 +59,7 @@ public class TelegramBot extends TelegramLongPollingBot{
         listOfCommands.add(new BotCommand("/mydata", "получить данные о себе из системы"));
         listOfCommands.add(new BotCommand("/history", "получить историю обслуживания из системы"));
         listOfCommands.add(new BotCommand("/deletedata", "удалить свои данные из системы"));
+        listOfCommands.add(new BotCommand("/unsubscribe", "отписаться от рассылки"));
         listOfCommands.add(new BotCommand("/help", "информация как пользоваться ботом"));
         listOfCommands.add(new BotCommand("/settings", "настроить систему под себя"));
         try{
@@ -113,11 +114,11 @@ public class TelegramBot extends TelegramLongPollingBot{
                         break;
                     case "/mydata":
                     case "проверить мои данные":
-                        if(clientService.getClient((int) chatId) == null)
+                        if(currentClient == null)
                             sendMessage(chatId, EmojiParser.parseToUnicode("Ваши данные отсутствуют в системе :grimacing:"));
                         else{
                             sendMessage(chatId, "Ваши данные: \n");
-                            sendMessage(chatId, clientService.getClient((int) chatId).toString());
+                            sendMessage(chatId, currentClient.toString());
                         }
                         break;
                     case "/history":
@@ -130,16 +131,24 @@ public class TelegramBot extends TelegramLongPollingBot{
                         sendMessage(chatId, EmojiParser.parseToUnicode("Ваши данные успешно удалены из системы! :smile:"));
                         break;
                     case "записаться на ТО":
-                        if(clientService.getClient((int) chatId) == null)
+                        if(currentClient == null)
                             sendMessage(chatId, EmojiParser.parseToUnicode("Чтобы записаться на ТО, Вы должны быть авторизованы в системе :face_with_monocle:"));
                         else
                             sendMessage(chatId, EmojiParser.parseToUnicode("Вы были успешно записаны на ТО :wink:"));
                         break;
                     case "подписаться на рассылку":
-                        if(clientService.getClient((int) chatId) == null)
+                        if(currentClient == null)
                             sendMessage(chatId, EmojiParser.parseToUnicode("Чтобы подпписаться на рассылку, Вы должны быть авторизованы в системе :face_with_monocle:"));
-                        else
+                        else {
+                            currentClient.setSubscribed(true);
+                            clientService.saveClient(currentClient);
                             sendMessage(chatId, EmojiParser.parseToUnicode("Вы успешно подписались на рассылку :grin:"));
+                        }
+                        break;
+                    case "/unsubscribe":
+                        currentClient.setSubscribed(false);
+                        clientService.saveClient(currentClient);
+                        sendMessage(chatId, EmojiParser.parseToUnicode("Вы отписались от рассылки :worried:"));
                         break;
                     default:
                         sendMessage(chatId, EmojiParser.parseToUnicode("Извините, команда не распознана  :pensive:"));
@@ -280,7 +289,8 @@ public class TelegramBot extends TelegramLongPollingBot{
         var clients = clientService.getAllClients();
         for(Ads ad : ads){
             for(Client client : clients){
-                sendMessage(client.getId(), ad.getAd());
+                if(client.isSubscribed())
+                    sendMessage(client.getId(), ad.getAd());
             }
         }
     }

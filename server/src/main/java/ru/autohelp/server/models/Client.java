@@ -37,6 +37,9 @@ public class Client {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "subscribe")
+    private boolean isSubscribed;
+
     @OneToOne
     private Car car;
 
@@ -101,6 +104,14 @@ public class Client {
         this.password = password;
     }
 
+    public void setSubscribed(boolean subscribed) {
+        isSubscribed = subscribed;
+    }
+
+    public boolean isSubscribed() {
+        return isSubscribed;
+    }
+
     @Override
     public String toString() {
         return "Client{" +
@@ -108,6 +119,7 @@ public class Client {
                 ", fullName='" + fullName + '\'' +
                 ", contact='" + contact + '\'' +
                 ", role='" + role + '\'' +
+                ", isSubscribed=" + isSubscribed +
                 ", car=" + car +
                 '}';
     }
