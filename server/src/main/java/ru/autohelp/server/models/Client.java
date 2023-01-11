@@ -37,8 +37,7 @@ public class Client {
     @Column(name = "password")
     private String password;
 
-    @OneToOne(mappedBy = "client", cascade = CascadeType.PERSIST,
-            fetch = FetchType.LAZY)
+    @OneToOne
     private Car car;
 
 
@@ -109,7 +108,6 @@ public class Client {
                 ", fullName='" + fullName + '\'' +
                 ", contact='" + contact + '\'' +
                 ", role='" + role + '\'' +
-                ", password='" + password + '\'' +
                 ", car=" + car +
                 '}';
     }

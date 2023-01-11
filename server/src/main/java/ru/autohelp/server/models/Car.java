@@ -43,7 +43,7 @@ public class Car {
     @Column(name = "number")
     private String number;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "car", cascade = CascadeType.ALL)
     private Client client;
 
     public Car() {
@@ -115,9 +115,9 @@ public class Car {
         this.number = number;
     }
 
-    public Client getClient() {
-        return client;
-    }
+//    public Client getClient() {
+//        return client;
+//    }
 
     public void setClient(Client client) {
         this.client = client;
@@ -133,7 +133,6 @@ public class Car {
                 ", year=" + year +
                 ", mileage=" + mileage +
                 ", number='" + number + '\'' +
-                ", owner=" + client +
                 '}';
     }
 }

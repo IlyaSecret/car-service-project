@@ -2,6 +2,7 @@ package ru.autohelp.server.service;
 
 import com.vdurmont.emoji.EmojiParser;
 import lombok.extern.slf4j.Slf4j;
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKe
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.autohelp.server.config.BotConfig;
+import ru.autohelp.server.dao.HistoryRepository;
 import ru.autohelp.server.models.Ads;
 import ru.autohelp.server.models.Client;
 import ru.autohelp.server.dao.AdsRepository;
@@ -36,6 +38,9 @@ public class TelegramBot extends TelegramLongPollingBot{
     @Autowired
     private AdsRepository adsRepository;
 
+    @Autowired
+    private HistoryRepository historyRepository;
+
     private final BotConfig config;
 
     private static final String HELP_TEXT = "Этот бот создан для упрощения создания заявки на тех. осмотр. \n" +
@@ -52,6 +57,7 @@ public class TelegramBot extends TelegramLongPollingBot{
         listOfCommands.add(new BotCommand("/register", "регистрация своих данных в систему"));
         listOfCommands.add(new BotCommand("/send", "рассылка сообщения всем пользователям"));
         listOfCommands.add(new BotCommand("/mydata", "получить данные о себе из системы"));
+        listOfCommands.add(new BotCommand("/history", "получить историю обслуживания из системы"));
         listOfCommands.add(new BotCommand("/deletedata", "удалить свои данные из системы"));
         listOfCommands.add(new BotCommand("/help", "информация как пользоваться ботом"));
         listOfCommands.add(new BotCommand("/settings", "настроить систему под себя"));
@@ -113,6 +119,10 @@ public class TelegramBot extends TelegramLongPollingBot{
                             sendMessage(chatId, "Ваши данные: \n");
                             sendMessage(chatId, clientService.getClient((int) chatId).toString());
                         }
+                        break;
+                    case "/history":
+                        sendMessage(chatId, "История обслуживания: \n");
+                        sendMessage(chatId, historyRepository.findAll().toString());
                         break;
                     case "/deletedata":
                     case "удалить мои данные":
