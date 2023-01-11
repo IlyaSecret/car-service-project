@@ -20,6 +20,11 @@ public class Car {
     @Column(name = "vin")
     private String vin;
 
+    @NotEmpty(message = "Марка не должна быть пустой")
+    @Size(min = 2, max = 100, message = "Марка должна быть от 2 до 100 символов длиной")
+    @Column(name = "brand")
+    private String brand;
+
     @NotEmpty(message = "Модель не должна быть пустой")
     @Size(min = 2, max = 100, message = "Модель должна быть от 2 до 100 символов длиной")
     @Column(name = "model")
@@ -38,19 +43,18 @@ public class Car {
     @Column(name = "number")
     private String number;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "client_id")
-    private Client owner;
+    @OneToOne(mappedBy = "car", cascade = CascadeType.ALL)
+    private Client client;
 
     public Car() {
 
     }
 
-    public Car(String vin, String model, int year, Client owner, int mileage, String number) {
+    public Car(String vin, String model, int year, Client client, int mileage, String number) {
         this.vin = vin;
         this.model = model;
         this.year = year;
-        this.owner = owner;
+        this.client = client;
         this.mileage = mileage;
         this.number = number;
     }
@@ -69,6 +73,14 @@ public class Car {
 
     public void setVin(String vin) {
         this.vin = vin;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public String getModel() {
@@ -103,12 +115,12 @@ public class Car {
         this.number = number;
     }
 
-    public Client getOwner() {
-        return owner;
-    }
+//    public Client getClient() {
+//        return client;
+//    }
 
-    public void setOwner(Client owner) {
-        this.owner = owner;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     @Override
@@ -116,11 +128,11 @@ public class Car {
         return "Car{" +
                 "id=" + id +
                 ", vin='" + vin + '\'' +
+                ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", year=" + year +
                 ", mileage=" + mileage +
                 ", number='" + number + '\'' +
-                ", owner=" + owner +
                 '}';
     }
 }

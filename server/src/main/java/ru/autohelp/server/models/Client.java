@@ -31,14 +31,17 @@ public class Client {
 //    @Column(name = "year_of_birth")
 //    private int yearOfBirth;
 
-    @OneToOne(mappedBy = "owner", cascade = CascadeType.PERSIST)
-    private Car car;
-
     @Column(name = "role")
     private String role;
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "subscribe")
+    private boolean isSubscribed;
+
+    @OneToOne
+    private Car car;
 
 
     // Конструктор по умолчанию нужен для Spring
@@ -101,14 +104,23 @@ public class Client {
         this.password = password;
     }
 
+    public void setSubscribed(boolean subscribed) {
+        isSubscribed = subscribed;
+    }
+
+    public boolean isSubscribed() {
+        return isSubscribed;
+    }
+
     @Override
     public String toString() {
         return "Client{" +
                 "id=" + id +
                 ", fullName='" + fullName + '\'' +
                 ", contact='" + contact + '\'' +
-                ", car='" + car + '\'' +
                 ", role='" + role + '\'' +
+                ", isSubscribed=" + isSubscribed +
+                ", car=" + car +
                 '}';
     }
 }
