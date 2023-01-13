@@ -41,6 +41,7 @@ body {
 }
 .personal-account__content {
     padding-left: 473px;
+    padding-right: 40px;
     padding-top: 140px;
 }
 .active {
@@ -48,7 +49,7 @@ body {
 }
 .personal-account__nav--logout {
     position: relative;
-    top: 550px;
+    top: 520px;
     left: 100px;
     width: 186px;
     height: 41px;
@@ -59,4 +60,15 @@ body {
     border: 1px solid black;
     border-radius: 10px;
     display: block;
+    transition: 0.3s all;
+}
+
+.personal-account__nav--logout:hover {
+    background-color: #1381EA;
+    border: none;
+}
+.telegram {
+    position: absolute;
+    top: 800px;
+    left: 175px; 
 }

@@ -1,0 +1,8 @@
+.account-history__table {
+    width: 70vw;
+}
+
+.account-history__table--header {
+    display: grid;
+    grid-template-columns: 15% 15% 20% 20% 15% 15%;
+}
