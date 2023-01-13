@@ -15,7 +15,7 @@
         display: flex;
         justify-content: flex-end;
         font-weight: 300;
-        font-size: 24px;
+        font-size: 22px;
         line-height: 30px;
     }
     .header__bottom__navigation__list {
@@ -38,7 +38,7 @@ button {
     font-family: "Tondo Corp";
     border: none;
     background-color: white;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 30px;
     letter-spacing: 0.05em;
     cursor: pointer;
@@ -71,4 +71,53 @@ button {
 a {
     text-decoration: none;
     color: black;
+}
+
+input {
+    width: 386px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-family: 'Tondo Corp';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 0.05em;
+    padding: 8px 0px 8px 20px;
+}
+
+.sign-in__modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    h2 {
+        color: black;
+    }
+}
+
+#sign-in-form__button {
+    background-color: #1381EA;
+    color: white;
+    padding: 7px 19px;
+    border-radius: 10px;
+    border: none;
+    width: 412px;
+    height: 45px;
+    font-family: 'Tondo Corp';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    margin-right: 29px;
+
+}
+
+.sign-in-form__number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
