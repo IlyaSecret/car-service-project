@@ -23,13 +23,8 @@ public class Client {
 
     @NotEmpty(message = "Контакт не должно быть пустым")
     @Size(min = 2, max = 100, message = "Контакт должно быть от 2 до 100 символов длиной")
-//    @Digits(message = "Телефон должен состоять только из цифр", integer = 11, fraction = 0)
     @Column(name = "contact")
     private String contact;
-
-//    @Min(value = 1900, message = "Год рождения должен быть больше, чем 1900")
-//    @Column(name = "year_of_birth")
-//    private int yearOfBirth;
 
     @Column(name = "role")
     private String role;
