@@ -109,13 +109,12 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" +
-                "id=" + id +
-                ", fullName='" + fullName + '\'' +
-                ", contact='" + contact + '\'' +
-                ", role='" + role + '\'' +
-                ", isSubscribed=" + isSubscribed +
-                ", car=" + car +
-                '}';
+        return "Client:" + "\n" +
+                "id = " + id + ",\n" +
+                "fullName = " + fullName + ",\n" +
+                "contact = " + contact + ",\n" +
+                "role = " + role + ",\n" +
+                "isSubscribed = " + isSubscribed + ",\n" +
+                "car = " + car;
     }
 }

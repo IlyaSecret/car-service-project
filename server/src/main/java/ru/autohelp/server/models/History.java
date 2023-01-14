@@ -26,4 +26,14 @@ public class History {
 
     @OneToOne
     private Client client;
+
+    @Override
+    public String toString() {
+        return "\n History:" + "\n" +
+                "id = " + id + ",\n" +
+                "employeeName = " + employeeName + ",\n" +
+                "works = " + works + ",\n" +
+                "date = " + date + ",\n" +
+                "client = " + client;
+    }
 }
