@@ -1,5 +1,7 @@
 package ru.autohelp.server.models;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
@@ -8,6 +10,7 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
+@Schema(description = "Car Service Client")
 @Entity
 @Table(name = "client")
 public class Client {

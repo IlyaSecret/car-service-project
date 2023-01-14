@@ -1,10 +1,12 @@
 package ru.autohelp.server.models;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
+@Schema(description = "Service History")
 @Data
 @Entity
 @Table(name = "history")
@@ -21,6 +23,7 @@ public class History {
     @Column(name = "works")
     private String works;
 
+    @Schema(example = "xx.xx.xxxx")
     @Column(name = "date")
     private String date;
 
