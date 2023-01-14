@@ -1,5 +1,7 @@
 package ru.autohelp.server.models;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
@@ -8,6 +10,7 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
+@Schema(description = "Car Service Client")
 @Entity
 @Table(name = "client")
 public class Client {
@@ -23,13 +26,8 @@ public class Client {
 
     @NotEmpty(message = "Контакт не должно быть пустым")
     @Size(min = 2, max = 100, message = "Контакт должно быть от 2 до 100 символов длиной")
-//    @Digits(message = "Телефон должен состоять только из цифр", integer = 11, fraction = 0)
     @Column(name = "contact")
     private String contact;
-
-//    @Min(value = 1900, message = "Год рождения должен быть больше, чем 1900")
-//    @Column(name = "year_of_birth")
-//    private int yearOfBirth;
 
     @Column(name = "role")
     private String role;
@@ -114,13 +112,12 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" +
-                "id=" + id +
-                ", fullName='" + fullName + '\'' +
-                ", contact='" + contact + '\'' +
-                ", role='" + role + '\'' +
-                ", isSubscribed=" + isSubscribed +
-                ", car=" + car +
-                '}';
+        return "Client:" + "\n" +
+                "id = " + id + ",\n" +
+                "fullName = " + fullName + ",\n" +
+                "contact = " + contact + ",\n" +
+                "role = " + role + ",\n" +
+                "isSubscribed = " + isSubscribed + ",\n" +
+                "car = " + car;
     }
 }

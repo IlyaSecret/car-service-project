@@ -1,14 +1,34 @@
 import { useEffect, useRef } from "react";
 import "./header.scss";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Modal from "../modal/modal";
+import { useDispatch, useSelector } from "react-redux";
+import { AuthorizationStatus } from "../../consts";
+import { getUserData } from "../../store/reducer/reducer";
 
 export default function Header() {
+  const [active, setActive] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState();
+  const [vehicleNumber, setVehicleNumber] = useState();
+  const authStatus = useSelector((state) => state.authStatus);
+  const authError = useSelector((state) => state.authError);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const clickHandler = (position) => {
     window.scrollTo({
       top: position,
       behavior: "smooth",
     });
   };
+  const onPersonalAccountClick = () => {
+    if (authStatus === AuthorizationStatus.Auth) {
+      navigate("/personal-account");
+    } else {
+      setActive(true);
+    }
+  };
+
   return (
     <div className="header">
       <div className="header__top">
@@ -48,13 +68,53 @@ export default function Header() {
                   Отзывы
                 </button>
               </li>
-              <li id="header_lk">
-                <Link to="/personal-account">Личный кабинет</Link>
+              <li id="header_lk" onClick={onPersonalAccountClick}>
+                Личный кабинет
               </li>
             </ul>
           </nav>
         </div>
       </div>
+      <Modal active={active} setActive={setActive}>
+        {authStatus === AuthorizationStatus.Auth ? (
+          navigate("/personal-account")
+        ) : (
+          <div className="sign-in__modal">
+            <h2>Вход</h2>
+            <div className="sign-in-form__number">
+              <input
+                type="text"
+                placeholder="Номер телефона"
+                onChange={(e) => setPhoneNumber(e.target.value)}
+              ></input>
+            </div>
+            <div className="sign-in-form__vehicle-number">
+              <input
+                type="text"
+                placeholder="Гос. номер"
+                onChange={(e) => setVehicleNumber(e.target.value)}
+              ></input>
+            </div>
+
+            <button
+              id="sign-in-form__button"
+              onClick={() => {
+                dispatch(
+                  getUserData({
+                    phoneNumber: phoneNumber,
+                    vehicleNumber: vehicleNumber,
+                  })
+                );
+              }}
+            >
+              Войти
+            </button>
+            {authError && (
+              <span style={{ color: "red" }}>Аккаунт не найден</span>
+            )}
+          </div>
+        )}
+      </Modal>
     </div>
   );
 }

@@ -5,8 +5,11 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.beans.factory.annotation.Autowired;
 
+@Schema(description = "Client's car")
 @Entity
 @Table(name = "car")
 public class Car {
@@ -15,6 +18,7 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Schema(example = "WBA47110007817985")
     @NotEmpty(message = "VIN-номер автомобиля не должен быть пустым")
     @Size(min = 2, max = 100, message = "VIN-номер автомобиля должен быть от 2 до 100 символов длиной")
     @Column(name = "vin")
@@ -38,6 +42,8 @@ public class Car {
     @Column(name = "mileage")
     private int mileage;
 
+
+    @Schema(example = "K323AO")
     @NotEmpty(message = "Номер не должен быть пустой")
     @Size(min = 8, max = 9, message = "Номер должен быть от 8 до 9 символов длиной")
     @Column(name = "number")
@@ -125,14 +131,13 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car{" +
-                "id=" + id +
-                ", vin='" + vin + '\'' +
-                ", brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", year=" + year +
-                ", mileage=" + mileage +
-                ", number='" + number + '\'' +
-                '}';
+        return "Car:" + "\n" +
+                "id = " + id + ",\n" +
+                "vin = " + vin + ",\n" +
+                "brand = " + brand + ",\n" +
+                "model = " + model + ",\n" +
+                "year = " + year + ",\n" +
+                "mileage = " + mileage + ",\n" +
+                "number = " + number;
     }
 }

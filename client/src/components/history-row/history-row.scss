@@ -1,0 +1,22 @@
+.row {
+    width: 70vw;
+    display: grid;
+    grid-template-columns: 15% 15% 20% 20% 15% 15%;
+}
+
+.regular {
+    font-size: 20px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.small {
+    font-size: 16px;
+}
+
+.underline {
+    width: 70vw;
+    border-bottom: 1px solid black;
+}
